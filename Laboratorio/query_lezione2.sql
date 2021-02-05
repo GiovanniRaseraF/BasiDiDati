@@ -121,8 +121,18 @@ select name, title, stars, ratingDate
 from movie natural join rating natural join reviewer 
 order by name asc, title asc, stars desc;
 
---
+--RAGGRUPPAMENTO
+--Quanti film nella base di dati sono stati prodotti tra il 1977 e il 1975
+select count(*) as numero
+from movie
+where year >= '1977' and year <= '1986';
 
+--Valutazione media dei film di james cameroon
+select avg(stars) as media_voti
+from movie natural join rating 
+where director = 'James Cameroon';
+
+--La data della critica più recente 
 
 
 
