@@ -68,4 +68,69 @@ select distinct autore, genere
 from socio natural join ha_letto natural join libro 
 where sesso = 'M';
 
+--Trovare i titoli dei libri gialli letti da ElladePedon
+select titolo 
+from socio natural join ha_letto natural join libro 
+where socio.nome = 'ElladePedon' and libro.genere = 'giallo';
+
+--I titoli dei libri e la sala in cui sono collocati
+select titolo, sala 
+from libro join genere on genere = nome 
+
+--I titoli dei libri e la sala in cui sono collocati inclusi i libri 
+-- di cui non è possibili trovare la collocazione
+select titolo, sala 
+from libro left outer join genere on libro.genere = genere.nome;
+
+--I numeri di carta di identità delle coppie di soci che hanno letto
+-- uno stesso libro
+select s1.ci, s2.ci 
+from ha_letto as s1 join ha_letto s2 on s1.isbn = s2.isbn
+where s1.ci < s2.ci
+
+--Numeri di ci di chi ha letto libri di cui non è specificato il genere
+select distinct s.ci 
+from ha_letto natural join libro 
+where genere is null;
+
+--I numeri di ci dei soci che hanno letto almeno un libro situato nella sala A
+select distinct ci
+from ha_letto natural join libro join genere on libro.genere = genere.nome 
+where sala = 'A';
+
+--INTERROGAZIONI RAGGRUPPATE
+--Esercizi:
+--Ragionamento su schema movie ratings
+
+--Ottenere i film diretti da steven spilberg in ordine alfaberico
+select title
+from movie 
+where director = "Ste Spe"
+order by title;
+
+--Ottenere in ordine cresciente gli anni distinti in cui sono stati prodotti film
+-- che hanno ricevuto una valutazione >= 4
+select distinct year
+from movie natural join rating 
+where stars >= 4
+order by year asc;
+
+--Ottenere i nomi dei critici e i titoli dei film con la valutazione e la data
+-- ordinati come segue (nomeCritico alfa, titoloFilm alfa, valutazione desc)
+select name, title, stars, ratingDate
+from movie natural join rating natural join reviewer 
+order by name asc, title asc, stars desc;
+
 --
+
+
+
+
+
+
+
+
+
+
+
+
