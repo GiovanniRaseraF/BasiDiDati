@@ -26,3 +26,28 @@ $$
         end if; 
     end;
 $$;
+
+create trigger libro_esclusivo before 
+insert or update 
+on LIBRO 
+for each row
+execute procedure valida_libro();
+
+--Per dvd
+create or replace function valida_dvd()
+returns trigger language plpgsql as
+$$
+    begin
+        perform * 
+        from libro 
+        where id = new.id;
+
+        if FOUND            --SE VIEN TROVATO QUALCOSA
+        then
+            raise exception 'Specializzazione non esclusiva!';
+            return null;
+        else
+            return new;
+        end if; 
+    end;
+$$;
