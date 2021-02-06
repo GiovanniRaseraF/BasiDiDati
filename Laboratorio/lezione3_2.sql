@@ -103,17 +103,26 @@ check (controlla_supervisore(cf));
 
 --Si definisca una funzione che, ricevuto in input un mid,
 -- restituisca il suo ratings medio
-create or replace function rating_medio(mid int)
-returns number 
+create or replace function rating_medio(my_mid int)
+returns numeric 
 language plpgsql as 
 $$ 
     declare 
-        r_medio number;
+        r_medio numeric;
     begin 
         select avg(stars) to r_medio 
         from rating 
-        where rating.mid = mid;
-
+        where rating.mid = my_mid;
+        
+        if r_medio is null
+            then return 0;
+        end if;
+        
         return r_medio;
     end;
 $$;
+
+--Ottenere i film con il loro rating medio
+select mid, title, rating_medio(mid)
+from movie 
+order by mid;
