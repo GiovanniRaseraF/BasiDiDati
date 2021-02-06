@@ -45,7 +45,36 @@ where not exists(
 )
 order by title;
 
+--Quanti registi hanno diretto film più vecchi del film con mid=107
+-- senza nessun join 
+-- senza group by
+-- va bene count()
+select count(distinct director)
+from movie 
+where year < (              --ritorna solo un risultato
+    select year 
+    from movie 
+    where mid = 107
+);
 
+--Quale è il critico che ha recensito tutti i film di spilberg ?
+select *
+from reviewer
+where 
+    not exists(
+        select *
+        from movie 
+        where movie.director = "spilberg"
+            and
+            not exists(
+                select *
+                from rating
+                where rating.rid = reviewer.rid
+                    and rating.mid = movie.mid
+            )
+    );
+
+--
 
 
 
