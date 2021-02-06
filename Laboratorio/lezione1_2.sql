@@ -1,4 +1,4 @@
---Transazioni
+    --Transazioni
     -- tante operazioni in sequenza viste come un operazione atomica
     -- vincoli ACID
     -- devo rispettare i vincoli che ho specificato
