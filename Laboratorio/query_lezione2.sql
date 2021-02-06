@@ -132,7 +132,27 @@ select avg(stars) as media_voti
 from movie natural join rating 
 where director = 'James Cameroon';
 
---La data della critica più recente 
+--La data della critica più recente a un film di victor flaming
+select max(ratingDate) 
+from movie natural join rating 
+where director = 'Victor Fleming';
+
+--Ottieni il titolo e la valutazione massima per ogni film che è stato 
+-- valutato almeno una volta in ordine descresciente rispetto al voto
+select title, max(stars) as beststars
+from movie natural join rating 
+group by title
+order by beststars desc;
+
+--Ottenere il titolo e la differenza tra voto massimo e voto minimo
+-- per ogni film che abbia ricevuto almeno due valutazioni e ordina 
+-- il risultato rispetto al titolo
+select title, max(stars) - min(stars)
+from movie natural join rating 
+group by title, mid 
+having count(*) >= 2
+order by title;
+
 
 
 

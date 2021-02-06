@@ -1,5 +1,5 @@
 --Esempio di laboratorio
-pasql -U postgres
+psql -U postgres
 
 \l
 
