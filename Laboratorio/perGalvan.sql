@@ -48,3 +48,11 @@ insert into attore(codiceattore, cognome, nome, sesso) values
 (default, 'bellotto', 'chiara', 'f'),
 (default, 'galvan', 'matteo', 'f'),
 (default, 'bello', 'ganilio', 'm');
+
+insert into film(codicefilm, titolo, regista) values
+(default, 'Olocausto', 'antonioni'),
+(default, 'Pannotti', 'antonioni'),
+(default, 'Sedimento', 'antonioni'),
+(default, 'Oracolo Blu', 'kronaker'),
+(default, 'Selamina artale', 'kronaker'),
+(default, 'Collopio bell', 'selloppo');
