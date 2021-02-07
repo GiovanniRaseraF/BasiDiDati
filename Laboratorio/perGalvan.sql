@@ -1,5 +1,5 @@
 --Esercizio per Galvan
-drop schema  if exists cascade films;
+drop schema if exists films cascade;
 create schema if not exists films;
 set search_path to films;
 create domain nomi as varchar(20);
