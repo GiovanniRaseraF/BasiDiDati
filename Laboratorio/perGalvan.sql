@@ -28,8 +28,8 @@ create table attore(
 
 --Tabella delle interpretazioni
 create table interpretazione(
-    film_fk,
-    attore_fk,
+    film_fk         serial,
+    attore_fk       serial,
     personaggio     nomi,
     --vincoli di integrità
     primary key(film_fk, attore_fk),
