@@ -1,4 +1,5 @@
 --Esercizio per Galvan
+drop schema films if exists cascade;
 create schema if not exists films;
 set search_path to films;
 create domain nomi as varchar(20);
@@ -11,7 +12,6 @@ create table film(
     anno            int,
     --vincoli di integrità
     primary key(codicefilm),
-    constraint anno_creazione  check (anno > 1800)
 );
 
 create table attore(
@@ -31,6 +31,8 @@ create table interpretazione(
     personaggio     nomi,
     --vincoli di integrità
     primary key(film, attore),
-    foreign key(attore) references attore.codiceattore,
-    foreign key(film)   references film.codicefilm
+    add constraint fk_attore foreign key(attore) references attore.codiceattore
+    on update cascade on delete no action,
+    add constraint fk_film   foreign key(film)   references film.codicefilm
+    on update cascade on delete no action
 );
