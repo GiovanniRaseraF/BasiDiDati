@@ -50,6 +50,8 @@ fk:y -> s(w)        fk:z ->r(x)
 
 --durante la transazione keyword set constraints all deferred
 
+--I vincoli circolari non sono molto buoni
+
 create table R(x int primary key, y int not null);
 create table s(w int primary key, z int not null references r deferrable);
 alter table r add foreign key (y) references s deferrable;
@@ -59,3 +61,4 @@ set constraints all deferred;
 insert into r values (1, 10);
 insert into s values (10, 1);
 commit;
+
