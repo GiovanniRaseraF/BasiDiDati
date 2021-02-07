@@ -31,8 +31,8 @@ create table interpretazione(
     personaggio     nomi,
     --vincoli di integrità
     primary key(film_fk, attore_fk),
-    add constraint fk_attore foreign key(attore_fk) references attore
+    foreign key(attore_fk) references attore
     on update cascade on delete no action,
-    add constraint fk_film   foreign key(film_fk)   references film
+    foreign key(film_fk)   references film
     on update cascade on delete no action
 );
