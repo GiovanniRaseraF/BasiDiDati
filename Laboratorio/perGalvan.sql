@@ -11,7 +11,7 @@ create table film(
     regista         nomi,
     anno            int,
     --vincoli di integrità
-    primary key(codicefilm),
+    primary key(codicefilm)
 );
 
 create table attore(
