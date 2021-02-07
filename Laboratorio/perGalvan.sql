@@ -6,7 +6,7 @@ create domain nomi as varchar(20);
 
 --Tabella film
 create table film(
-    codicefilm      int,
+    codicefilm      serial,
     titolo          nomi,
     regista         nomi,
     anno            int,
@@ -14,8 +14,9 @@ create table film(
     primary key(codicefilm)
 );
 
+--Tabella degli attori
 create table attore(
-    codiceattore    int,
+    codiceattore    serial,
     cognome         nomi,
     nome            nomi,
     sesso           char,
@@ -25,9 +26,10 @@ create table attore(
     primary key(codiceattore) 
 );
 
+--Tabella delle interpretazioni
 create table interpretazione(
-    film_fk         int,
-    attore_fk       int,
+    film_fk,
+    attore_fk,
     personaggio     nomi,
     --vincoli di integrità
     primary key(film_fk, attore_fk),
@@ -36,3 +38,13 @@ create table interpretazione(
     foreign key(film_fk)   references film
     on update cascade on delete no action
 );
+
+
+--Popolamento del database
+insert into attore(codiceattore, cognome, nome, sesso) values
+(default, 'bianchi', 'federico', 'm'),
+(default, 'rasera', 'giovanni', 'f'),
+(default, 'da re', 'davide', 'f'),
+(default, 'bellotto', 'chiara', 'f'),
+(default, 'galvan', 'matteo', 'f'),
+(default, 'bello', 'ganilio', 'm');
