@@ -22,8 +22,7 @@ create table attore(
     datanascita     date,
     nazionalita     nomi,
     --vincoli di integrità
-    primary key(codiceattore),
-    constraint sesso_possibile check (sesso in ('m', 'f'));  
+    primary key(codiceattore) 
 );
 
 create table interpretazione(
