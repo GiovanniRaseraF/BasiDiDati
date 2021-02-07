@@ -11,7 +11,7 @@ create table film(
     anno            int,
     --vincoli di integrità
     primary key(codicefilm),
-    constraint anno_creazione  check (anno > 1800);
+    constraint anno_creazione  check (anno > 1800)
 );
 
 create table attore(
