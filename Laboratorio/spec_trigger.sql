@@ -51,3 +51,9 @@ $$
         end if; 
     end;
 $$;
+
+create trigger dvd_esclusiva 
+before insert or  update 
+on dvd 
+for each row 
+execute procedure valida_dvd();
