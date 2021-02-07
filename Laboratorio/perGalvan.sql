@@ -26,13 +26,13 @@ create table attore(
 );
 
 create table interpretazione(
-    film            int,
-    attore          int,
+    film_fk         int,
+    attore_fk       int,
     personaggio     nomi,
     --vincoli di integrità
-    primary key(film, attore),
-    add constraint fk_attore foreign key(attore) references attore.codiceattore
+    primary key(film_fk, attore_fk),
+    add constraint fk_attore foreign key(attore_fk) references attore
     on update cascade on delete no action,
-    add constraint fk_film   foreign key(film)   references film.codicefilm
+    add constraint fk_film   foreign key(film_fk)   references film
     on update cascade on delete no action
 );
