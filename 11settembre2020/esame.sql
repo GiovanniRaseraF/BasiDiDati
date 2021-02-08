@@ -10,7 +10,7 @@ create table reparto (
     nome        nomi,
     edificio    nomi,
     piano       int,
-    primario    serial,
+    primario    serial not null,
     --Vincoli
     primary key(nome)
 );
@@ -22,7 +22,7 @@ create table medico (
     specializzazione    nomi,
     genere      char,
     annonascita date,
-    reparto     nomi,
+    reparto     nomi not null,
     cittaresidenza      nomi,
     --Vincoli
     primary key(medicoid)
