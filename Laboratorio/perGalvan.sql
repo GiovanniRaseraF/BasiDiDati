@@ -135,7 +135,73 @@ where
         select *
         from interpretazione join film on film_fk = codicefilm
         where interpretazione.attore_fk = attore.codiceattore
-            and regista = 'antonioni'
+            and regista != 'antonioni'
 
     );
+
+
+
+    start transaction;
+--1 Film anto
+create temporary table filmAnto as (select * from film where regista = 'antonioni');
+select * from filmAnto;
+--2 Tutti
+create temporary table tutti as (
+    select attore_fk as attore, codicefilm
+    from interpretazione, filmAnto
+);
+select * from tutti;
+--3 Realmente
+create temporary table realmente as (
+    select attore_fk as attore, codicefilm 
+    from interpretazione join filmAnto on film_fk = codicefilm
+);
+select * from realmente;
+--4 booh
+create temporary table booh as (
+    select * from tutti 
+    except
+    select * from realmente 
+);
+select * from booh;
+--5 NoGood
+create temporary table nogood as (
+    select attore from realmente 
+    except 
+    select attore from booh
+);
+select * from nogood;
+--6 noGood 2
+--Adesso trovo quelli che hanno fatto un film che non è di antonioni
+create temporary table nogood2 as (
+    select attore_fk as attore
+    from interpretazione join film on film_fk = codicefilm 
+    where regista != 'antonioni'
+);
+select * from nogood2;
+
+--7 res
+create temporary table res as (
+    select codiceattore as attore 
+    from attore 
+    except
+    (
+        select * from nogood
+        union 
+        select * from nogood2
+    )
+
+);
+select * from res;
+commit;
+
+drop table tutti cascade;
+drop table filmAnto cascade;
+drop table realmente cascade;
+drop table booh cascade;
+drop table nogood cascade;
+drop table nogood2 cascade;
+drop table res cascade;
     
+
+
