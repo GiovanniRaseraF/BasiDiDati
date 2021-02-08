@@ -30,10 +30,10 @@ create table medico (
 
 alter table reparto
 add constraint fk_primario foreign key(primario) 
-references medico.medicoid 
+references medico 
 on update cascade on delete set null;
 
 alter table medico
 add constraint fk_reparto foreign key(reparto) 
-references reparto.nome 
+references reparto 
 on update cascade on delete set null;
