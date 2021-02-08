@@ -194,7 +194,7 @@ create temporary table res as (
 );
 select * from res;
 commit;
-
+--fdsa
 drop table tutti cascade;
 drop table filmAnto cascade;
 drop table realmente cascade;
