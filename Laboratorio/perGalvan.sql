@@ -47,10 +47,7 @@ insert into attore(codiceattore, cognome, nome, sesso) values
 (default, 'da re', 'davide', 'f'),
 (default, 'bellotto', 'chiara', 'f'),
 (default, 'galvan', 'matteo', 'f'),
-(default, 'bello', 'ganilio', 'm'),
-(default, '', 'M', 'm'),
-(default, '', 'C', 'm'),
-(default, '', 'S', 'm');
+(default, 'bello', 'ganilio', 'm');
 
 insert into film(codicefilm, titolo, regista) values
 (default, 'Olocausto', 'antonioni'),
@@ -80,6 +77,9 @@ insert into interpretazione(attore_fk, film_fk) values
 (9, 5),
 (9, 6);
 
-
-
-
+--Creo una transazione per simulare la AR
+start transaction;
+raise notice "Film di Anto\n";
+create temporary table filmAnto (select * from film where regista = 'antonioni');
+select * from filmAnto;
+commit;
