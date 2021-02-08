@@ -10,7 +10,7 @@ create table reparto (
     nome        nomi,
     edificio    nomi,
     piano       int,
-    primario    serial not null,
+    primario    serial,
     --Vincoli
     primary key(nome)
 );
@@ -22,7 +22,7 @@ create table medico (
     specializzazione    nomi,
     genere      char,
     annonascita date,
-    reparto     nomi not null,
+    reparto     nomi,
     cittaresidenza      nomi,
     --Vincoli
     primary key(medicoid)
@@ -30,10 +30,16 @@ create table medico (
 
 alter table reparto
 add constraint fk_primario foreign key(primario) 
-references medico deferrable
-on update cascade on delete cascade;
+references medico 
+on update cascade on delete set null;
 
 alter table medico
 add constraint fk_reparto foreign key(reparto) 
-references reparto deferrable
-on update cascade on delete cascade;
+references reparto 
+on update cascade on delete set null;
+
+
+--Da aggiungere il fatto che un medico non può essere il primario di più di un reparto
+-- serve quindi un trigger
+
+
