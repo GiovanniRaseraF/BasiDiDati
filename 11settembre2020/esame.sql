@@ -12,7 +12,7 @@ create table reparto (
     piano       int,
     primario    serial,
     --Vincoli
-    primary key(nome),
+    primary key(nome)
 );
 
 create table medico (
@@ -25,7 +25,7 @@ create table medico (
     reparto     nomi,
     cittaresidenza      nomi,
     --Vincoli
-    primary key(medicoid),
+    primary key(medicoid)
 );
 
 alter table reparto
