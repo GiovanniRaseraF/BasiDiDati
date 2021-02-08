@@ -88,4 +88,6 @@ create temporary table tutti as (
 );
 select * from tutti;
 
+drop table tutti cascade;
+drop table filmAnto cascade;
 commit;
