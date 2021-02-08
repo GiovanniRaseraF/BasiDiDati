@@ -79,7 +79,13 @@ insert into interpretazione(attore_fk, film_fk) values
 
 --Creo una transazione per simulare la AR
 start transaction;
-raise notice "Film di Anto\n";
-create temporary table filmAnto (select * from film where regista = 'antonioni');
+create temporary table filmAnto as (select * from film where regista = 'antonioni');
 select * from filmAnto;
+
+create temporary table tutti as (
+    select attore_fk as attore, codicefilm
+    from interpretazione, filmAnto
+);
+select * from tutti;
+
 commit;
