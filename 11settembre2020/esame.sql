@@ -30,10 +30,10 @@ create table medico (
 
 alter table reparto
 add constraint fk_primario foreign key(primario) 
-references medico 
+references medico deferrable initially immediate
 on update cascade on delete set null;
 
 alter table medico
 add constraint fk_reparto foreign key(reparto) 
-references reparto 
+references reparto deferrable initially immediate
 on update cascade on delete set null;
