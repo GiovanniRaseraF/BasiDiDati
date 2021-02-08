@@ -39,6 +39,18 @@ references reparto
 on update cascade on delete set null;
 
 
+
+--Inserimento di medici
+insert into medico (medicoid, nome, genere, cittaresidenza) values 
+(default, 'giovanni', 'm', 'Trieste'),
+(default, 'federico', 'm', 'Udine'),
+(default, 'maria', 'f', 'Trieste'),
+(default, 'elia', 'm', 'Malta'),
+(default, 'mauro', 'm', 'Varano'),
+(default, 'fabio', 'm', 'Udine'),
+(default, 'mara', 'f', 'Sarmede'),
+(default, 'vale', 'f', 'Malta');
+
 --Da aggiungere il fatto che un medico non può essere il primario di più di un reparto
 -- serve quindi un trigger
 
