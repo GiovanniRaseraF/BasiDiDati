@@ -24,6 +24,15 @@
 --Nel livello 3, 2pl stretto
 --Nel livello 4, 2pl stretto + lock_di_predicato
 
+
+--Livelli di isolamento nello standard sql:
+                                                --agg. fant
+--Livello di isolamento     |   Letture sporche | Letture inco  | Ins fantasma
+--1read uncommitted              possibile           possibile       possibile
+--2read committed             non-possibile          possibile       possibile
+--3repeatable read            non-possibile       non-possibile   non-possibile
+--4serializable               non-possibile       non-possibile   non-possibile
+
 --Perchè non è presente la perdita di aggiornamento ?
     --secondo lo std sql questa anomalia è sempre evitata
 
