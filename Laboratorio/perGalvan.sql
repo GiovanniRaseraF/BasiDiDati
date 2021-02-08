@@ -47,7 +47,10 @@ insert into attore(codiceattore, cognome, nome, sesso) values
 (default, 'da re', 'davide', 'f'),
 (default, 'bellotto', 'chiara', 'f'),
 (default, 'galvan', 'matteo', 'f'),
-(default, 'bello', 'ganilio', 'm');
+(default, 'bello', 'ganilio', 'm'),
+(default, '', 'M', 'm'),
+(default, '', 'C', 'm'),
+(default, '', 'S', 'm');
 
 insert into film(codicefilm, titolo, regista) values
 (default, 'Olocausto', 'antonioni'),
@@ -56,3 +59,20 @@ insert into film(codicefilm, titolo, regista) values
 (default, 'Oracolo Blu', 'kronaker'),
 (default, 'Selamina artale', 'kronaker'),
 (default, 'Collopio bell', 'selloppo');
+
+
+insert into attore(codiceattore, cognome, nome, sesso) values
+(default, '', 'M', 'm'),
+(default, '', 'C', 'm'),
+(default, '', 'S', 'm');
+
+insert into interpretazione(attore_fk, film_fk) values 
+(),
+(),
+(),
+(),
+(),
+(),
+
+
+
