@@ -53,9 +53,9 @@ insert into medico (medicoid, nome, genere, cittaresidenza) values
 
 
 insert into reparto(nome, piano, primario) values
-('cardiologico', 1, null),
-('pneumologia', 2, null),
-('cervellogia', 7, null);
+('cardiologico', 1),
+('pneumologia', 2),
+('cervellogia', 7);
 --Da aggiungere il fatto che un medico non può essere il primario di più di un reparto
 -- serve quindi un trigger
 
