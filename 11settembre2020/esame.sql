@@ -52,7 +52,7 @@ insert into medico (medicoid, nome, genere, cittaresidenza) values
 (default, 'vale', 'f', 'Malta');
 
 
-insert into reparto(nome, piano, primario) values
+insert into reparto(nome, piano) values
 ('cardiologico', 1),
 ('pneumologia', 2),
 ('cervellogia', 7);
