@@ -67,12 +67,19 @@ insert into attore(codiceattore, cognome, nome, sesso) values
 (default, '', 'S', 'm');
 
 insert into interpretazione(attore_fk, film_fk) values 
-(),
-(),
-(),
-(),
-(),
-(),
+(7, 1),
+(7, 2),
+(7, 3),
+(8, 1),
+(8, 2),
+(8, 3),
+(8, 6),
+(9, 1),
+(9, 2),
+(9, 4),
+(9, 5),
+(9, 6);
+
 
 
 
