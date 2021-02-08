@@ -79,15 +79,39 @@ insert into interpretazione(attore_fk, film_fk) values
 
 --Creo una transazione per simulare la AR
 start transaction;
+--1 Film anto
 create temporary table filmAnto as (select * from film where regista = 'antonioni');
 select * from filmAnto;
-
+--2 Tutti
 create temporary table tutti as (
     select attore_fk as attore, codicefilm
     from interpretazione, filmAnto
 );
 select * from tutti;
+--3 Realmente
+create temporary table realmente as (
+    select attore_fk as attore, codicefilm 
+    from interpretazione join filmAnto on film_fk = codicefilm
+);
+select * from realmente;
+--4 noGood
+create temporary table noGood as (
+    select * from tutti 
+    except
+    select * from realmente 
+);
+select * from noGood;
+--5 Res
+create temporary table res as (
+    select attore from realmente 
+    except 
+    select attore from noGood
+);
+select * from res;
+commit;
 
 drop table tutti cascade;
 drop table filmAnto cascade;
-commit;
+drop table realmente cascade;
+drop table noGood cascade;
+drop table res cascade;
