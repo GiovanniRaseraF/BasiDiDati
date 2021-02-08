@@ -71,11 +71,7 @@ insert into interpretazione(attore_fk, film_fk) values
 (8, 2),
 (8, 3),
 (8, 6),
-(9, 1),
-(9, 2),
-(9, 4),
-(9, 5),
-(9, 6);
+
 
 --Creo una transazione per simulare la AR
 start transaction;
@@ -115,3 +111,31 @@ drop table filmAnto cascade;
 drop table realmente cascade;
 drop table noGood cascade;
 drop table res cascade;
+
+
+
+--Tutti gli attori che hanno fatto un sottoinsieme dei film di martin
+select codiceattore, nome
+from attore 
+where 
+    exists(
+        select * 
+        from film as F1 
+        where F1.regista = 'antonioni'
+            and 
+            not exists(
+                select *
+                from interpretazione 
+                where interpretazione.attore_fk = codiceattore
+                    and F1.codicefilm = interpretazione.film_fk
+            )
+    )
+    and 
+    not exists(
+        select *
+        from interpretazione join film on film_fk = codicefilm
+        where interpretazione.attore_fk = attore.codiceattore
+            and regista = 'antonioni'
+
+    );
+    
