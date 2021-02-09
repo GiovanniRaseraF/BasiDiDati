@@ -35,7 +35,7 @@ $$
         from ha_scritto 
         where new.cf = ha_scritto.cf;
 
-        if numero < 5 
+        if numero < 2 
         then 
             return new;
         else 
