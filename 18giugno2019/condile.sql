@@ -9,18 +9,18 @@ create table autore(
 );
 --Libro
 create table libro(
-    cisbn   nomi primary key,
+    isbn   nomi primary key,
     titolo  nomi,
     anno    date
 );
 --Ha Letto
 create table ha_scritto(
     cf      nomi, 
-    cisbn   nomi,
-    primary key(cf, cisbn),
+    isbn   nomi,
+    primary key(cf, isbn),
     foreign key(cf) references autore 
         on update cascade on delete cascade,
-    foreign key(cisbm) references libro
+    foreign key(isbn) references libro
         on update cascade on delete cascade
 );
 
