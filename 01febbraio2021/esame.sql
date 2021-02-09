@@ -2,7 +2,7 @@ create table Dipartimento(
     id_dip          varchar(5) primary key,
     nome_dip        varchar(50),
     universita      varchar(50),
-    direttore       varchar(50),
+    direttore       varchar(50)
 );
 
 create table Ricercatore(
