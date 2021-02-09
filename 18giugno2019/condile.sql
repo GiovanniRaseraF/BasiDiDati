@@ -82,7 +82,7 @@ $$
     end;
 $$;
 
-create trigger solo_un_titolo_a_autore()
+create trigger solo_un_titolo_a_autore
 before insert or update on ha_scritto 
 for each row
 execute procedure stesso_titolo_aut_div(); 
