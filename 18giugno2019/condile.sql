@@ -38,7 +38,7 @@ $$
         from ha_scritto 
         where new.cf = ha_scritto.cf;
 
-        if numero_libri_scritti < 2
+        if numero_libri_scritti < 3
         then 
             return new;     --Inseriscila
         else 
