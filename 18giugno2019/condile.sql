@@ -9,14 +9,14 @@ create table autore(
 );
 --Libro
 create table libro(
-    isbn   nomi primary key,
+    isbn    nomi primary key,
     titolo  nomi,
     anno    date
 );
 --Ha Letto
 create table ha_scritto(
     cf      nomi, 
-    isbn   nomi,
+    isbn    nomi,
     primary key(cf, isbn),
     foreign key(cf) references autore 
         on update cascade on delete cascade,
@@ -59,11 +59,11 @@ $$
     declare
         numero_con_stesso_nome  integer;
         new_titolo              nomi;
-        new_isbn                nomi;
     begin
         --Ho trovato il titolo
         select titolo into new_titolo
-        from new join libro on new.isbn = libro.isbn;
+        from libro
+        where new.isbn = libro.isbn;
         --Ora cerco se c'è un titolo uguale con isbn diverso e scritto da new.cf
         perform *
         from ha_scritto, libro
