@@ -25,6 +25,8 @@ add constraint fk_libro foreign key(cisbn)
 references libro 
 on update cascade on delete cascade;
 
+
+--Creazione della funzione
 create or replace function ha_scritto_max_5()
 returns trigger language plpgsql as
 $$
@@ -44,6 +46,8 @@ $$
     end;
 $$;
 
+--Creazione del trigger che usa la funzione per capire se inse
+-- rire una tupla o no
 create trigger controlla_numero_libri
 before insert or update on ha_scritto 
 for each row 
