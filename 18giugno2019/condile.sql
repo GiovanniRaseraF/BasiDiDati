@@ -43,6 +43,7 @@ $$
             return new;     --Inseriscila
         else 
             return null;    --Non inserirla
+        end if;
     end;
 $$;
 
@@ -61,7 +62,7 @@ $$
         new_isbn                nomi;
     begin
         --Ho trovato il titolo
-        select titolo into new_titolo, isbn into new_isbn
+        select titolo into new_titolo
         from new join libro on new.isbn = libro.isbn;
         --Ora cerco se c'è un titolo uguale con isbn diverso e scritto da new.cf
         perform *
