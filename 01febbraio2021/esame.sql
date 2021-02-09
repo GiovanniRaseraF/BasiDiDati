@@ -18,7 +18,6 @@ foreign key(direttore) references Ricercatore
 deferrable initially deferred;
 
 start transaction;
-set constraint all deferred;
 insert into Dipartimento values 
 ('id111','CS','SU',  'DK'),
 ('id000','CS','CU',  'AT'),
@@ -31,8 +30,6 @@ insert into Ricercatore values
 ('RT', 72, 'id222');
 commit; 
 
-update Ricercatore set afferenza = 'id111' where nome = 'RT';
---No non viola nessuno di questi vincoli
 
 --Creo il trigger che controlla che un ricercatore che è direttore di un dipartimento
 -- non possa cambiare afferenza
@@ -62,6 +59,8 @@ for each row
 execute procedure aggiorna_ricercatore()
 
 
+--No non viola nessuno di questi vincoli
+update Ricercatore set afferenza = 'id111' where nome = 'RT';
 
 
 
